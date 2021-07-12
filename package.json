@@ -1,0 +1,29 @@
+{
+  "name": "node.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"npm run watch-ts\" \"npm run serve-debug\"",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "watch-ts": "tsc -w",
+    "serve-debug": "nodemon --inspect dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "pino": "^6.12.0",
+    "pino-pretty": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.1",
+    "@types/pino": "^6.3.9",
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.12",
+    "typescript": "^4.3.5"
+  }
+}
