@@ -1,0 +1,55 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "rules": {
+    "max-len": 1,
+    "no-console": 1,
+    "arrow-parens": 0,
+    "camelcase": 0,
+    "no-plusplus": 0,
+    "prefer-const": 0,
+    "no-param-reassign": 0,
+    "prefer-promise-reject-errors": 0,
+    "import/no-cycle": 0,
+    "array-callback-return": 0,
+    "import/prefer-default-export": 0,
+    "no-loop-func": 1,
+    "indent": [
+      "error",
+      1
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
+    "import/extensions": 0
+  }
+}
