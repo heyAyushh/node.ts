@@ -3,7 +3,7 @@ import pino from 'pino';
 // https://github.com/pinojs/pino/issues/673#issuecomment-506979971
 const wrap = (logger: pino.Logger) => {
  const { error, child } = logger;
- function errorRearranger(this: any, ...args: any[]) {
+ function errorRearranger<T>(this: T, ...args: T[]) {
   if (typeof args[0] === 'string' && args.length > 1) {
    for (let i = 1; i < args.length; i++) {
     const arg = args[i];
@@ -15,7 +15,7 @@ const wrap = (logger: pino.Logger) => {
   }
   return error.apply(this, args);
  }
- function childModifier(this: any, ...args: any[]): pino.Logger {
+ function childModifier<T>(this: T, ...args: T[]): pino.Logger {
   const c = child.apply(this, args);
   c.error = errorRearranger;
   c.child = childModifier;
@@ -37,10 +37,6 @@ const getLogger = () => (isDevelopment ? wrap(pino({
  timestamp: pino.stdTimeFunctions.isoTime,
 })));
 
-// level: process.env.DEV_LOG_LEVEL,
-// prettyPrint: { colorize: true },
-// translateTime: true,
-// timestamp: isDevelopment ? true : pino.stdTimeFunctions.isoTime,
 // useMetadata: true,
 
 // catch all the ways node might exit

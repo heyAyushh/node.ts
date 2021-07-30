@@ -49,7 +49,6 @@
       "error",
       1
     ],
-    "@typescript-eslint/no-explicit-any": 0,
     "import/extensions": 0
   }
 }
